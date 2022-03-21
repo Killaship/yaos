@@ -88,7 +88,23 @@ void bsod(const char* stopcode) {
 	kprint("If this is the first time you've seen this stop error screen, restart" , 0x1F); 
 	kprint_newline();
 	kprint("your computer. If this screen appears again, follow these steps:" , 0x1F);
-	
+	kprint_newline();
+	kprint_newline();
+	kprint("Check to make sure any new hardware or software is properly installed.", 0x1F);
+	kprint_newline();
+	kprint("If this is a new install, check your software/hardware vendor for", 0x1F);
+	kprint_newline();
+	kprint("any drivers or OS updates you may need.", 0x1F);
+	kprint_newline();
+	kprint("If problems continue, remove any newly installed hardware or software.", 0x1F);
+	kprint_newline();
+	kprint("Disable BIOS memory options such as caching or shadowing.", 0x1F);
+	kprint_newline();
+	kprint_newline();
+	kprint("Finally, if all else fails, go to https://github.com/Killaship/yaos/issues", 0x1F);
+	kprint_newline();
+	kprint("and submit an issue with the below information:", 0x1F);
+	kprint_newline();
 	
 }
 void err_handler() {
