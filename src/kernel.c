@@ -72,12 +72,15 @@ void clear_screen(void)
 
 
 void err_handler() {
+  vidptr = 0xB8000;
   unsigned int i = 0;
 	while (i < SCREENSIZE) {
 		vidptr[i++] = ' ';
 		vidptr[i++] = 0x11;
 	}
-  kprint("Hey, there's been an error!", 0x1F);
+  kprint("Hey, there's been an error! Reboot!", 0x1F); // Say there's been an error, and then hang.
+  asm volatile ("cli");
+  while(1);
 }
 
 void idt_init(void)
