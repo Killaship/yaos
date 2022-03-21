@@ -44,6 +44,8 @@ struct IDT_entry {
 struct IDT_entry IDT[IDT_SIZE];
 
 
+
+
 void kprint(const char *str, int color)
 {
 	unsigned int i = 0;
@@ -67,8 +69,25 @@ void clear_screen(void)
 		vidptr[i++] = 0x07;
 	}
 }
+/*
 
-
+struct stackframe {
+  struct stackframe* ebp;
+  uint32_t eip;
+};
+void stacktrace(unsigned int maxframes)
+{
+    struct stackframe *stk;
+    asm ("movl %%ebp,%0" : "r"(stk) ::);
+    kprint("Stack trace:", 0x1F);
+    for(unsigned int frame = 0; stk && frame < maxframes; ++frame)
+    {
+        // Unwind to previous stack frame
+        kprint("  0x{0:16}     \n", stk->eip);
+        stk = stk->ebp;
+    }
+}
+*/
 void bsod(const char* stopcode) {
 	
 	write_port(0x3D4, 0x0A); // Disable VGA cursor
