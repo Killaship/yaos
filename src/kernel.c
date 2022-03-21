@@ -145,8 +145,8 @@ void kmain(void)
 	kprint_newline();
 
 	idt_init();
-  	//int x = 0 / 0;
-  	//kprint((char*) x, 0x07);
+  	int x = 0 / 0;
+  	kprint((char*) x, 0x07);
 
 	while(1);
 }
