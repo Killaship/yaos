@@ -78,7 +78,7 @@ void err_handler() {
 		vidptr[i++] = ' ';
 		vidptr[i++] = 0x11;
 	}
-  kprint("Hey, there's been an error! Reboot!", 0x1F); // Say there's been an error, and then hang.
+  kprint("A problem has been detected and YAOS has been shut down to prevent damage to your computer. (reboot)", 0x1F); // Say there's been an error, and then hang.
   asm volatile ("cli");
   while(1);
 }
