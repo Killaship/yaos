@@ -70,20 +70,25 @@ void clear_screen(void)
 
 
 void bsod(const char* stopcode) {
-	current_loc = 0;
+	
+	write_port(0x3D4, 0x0A); // Disable VGA cursor
+	read_port(0x3D5, 0x20);
+	
+	current_loc = 0; // Paint screen blue
   	unsigned int i = 0;
 	while (i < SCREENSIZE) {
 		vidptr[i++] = ' ';
 		vidptr[i++] = 0x11;
 	}
-	kprint("A problem has been detected and YAOS has been shut down to prevent damage to" , 0x1F); 
+	kprint("A problem has been detected and YAOS has been shut down to prevent damage to" , 0x1F); // text and technical info
   	kprint_newline();
   	kprint("your computer.", 0x1F);
 	kprint_newline();
 	kprint_newline();
 	kprint("If this is the first time you've seen this stop error screen, restart" , 0x1F); 
 	kprint_newline();
-	kprint("your computer. If this screen appears again," , 0x1F);
+	kprint("your computer. If this screen appears again, follow these steps:" , 0x1F);
+	
 	
 }
 void err_handler() {
