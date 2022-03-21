@@ -72,7 +72,7 @@ void clear_screen(void)
 void bsod(const char* stopcode) {
 	
 	write_port(0x3D4, 0x0A); // Disable VGA cursor
-	read_port(0x3D5, 0x20);
+	write_port(0x3D5, 0x20);
 	
 	current_loc = 0; // Paint screen blue
   	unsigned int i = 0;
