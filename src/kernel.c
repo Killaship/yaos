@@ -72,7 +72,7 @@ void clear_screen(void)
 
 
 void err_handler() {
-  vidptr = 0xB8000;
+  vidptr = (char*)0xB8000;
   unsigned int i = 0;
 	while (i < SCREENSIZE) {
 		vidptr[i++] = ' ';
