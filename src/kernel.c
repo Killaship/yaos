@@ -69,18 +69,28 @@ void clear_screen(void)
 }
 
 
-
-
-void err_handler() {
-  current_loc = 0;
-  unsigned int i = 0;
+void bsod(const char* stopcode) {
+	current_loc = 0;
+  	unsigned int i = 0;
 	while (i < SCREENSIZE) {
 		vidptr[i++] = ' ';
 		vidptr[i++] = 0x11;
 	}
-  kprint("A problem has been detected and YAOS has been shut down to prevent damage to your computer. (reboot)", 0x1F); // Say there's been an error, and then hang.
-  asm volatile ("cli");
-  while(1);
+	kprint("A problem has been detected and YAOS has been shut down to prevent damage to" , 0x1F); 
+  	kprint_newline();
+  	kprint("your computer.", 0x1F);
+	kprint_newline();
+	kprint_newline();
+	kprint("If this is the first time you've seen this stop error screen, restart" , 0x1F); 
+	kprint_newline();
+	kprint("your computer. If this screen appears again," , 0x1F);
+	
+}
+void err_handler() {
+	// Say there's been an error, and then hang.
+	bsod("test");
+	asm volatile ("cli");
+	while(1);
 }
 
 void idt_init(void)
