@@ -56,3 +56,11 @@ void bsod(const char* stopcode) {
 	kprint_newline();
 	
 }
+
+
+void err_handler() {
+	// Say there's been an error, and then hang.
+	bsod("test");
+	asm volatile ("cli");
+	while(1);
+}
