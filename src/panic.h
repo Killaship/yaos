@@ -18,7 +18,7 @@ void stacktrace(unsigned int maxframes)
     }
 }
 */
-void bsod(const char* stopcode) {
+void bsod(const int stopcode) {
 	
 	write_port(0x3D4, 0x0A); // Disable VGA cursor
 	write_port(0x3D5, 0x20);
@@ -55,7 +55,38 @@ void bsod(const char* stopcode) {
 	kprint("and submit an issue with the below information:", 0x1F);
 	kprint_newline();
 	kprint_newline();
-	kprint(stopcode, 0x1F);
+	switch(stopcode) {
+		case 0: // #DE
+			kprint("Error type: #DE");
+			break;
+		case 1: // #DB
+		case 2: // NMI
+		case 3:
+		case 4:
+		case 5:
+		case 6:
+		case 7:
+		case 8:
+		case 9:
+		case 10:
+		case 11:
+		case 12:
+		case 13:
+		case 14:
+		case 15:
+		case 16:
+		case 17:
+		case 18:
+		case 19:
+		case 20:
+		case 21:
+		case 22:
+		case 23:
+		case 24:
+		case 25:
+		
+	}
+	
 	
 }
 
