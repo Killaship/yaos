@@ -74,7 +74,18 @@ void clear_screen(void)
 
 void idt_init(void)
 {
-	unsigned long err_address;
+	unsigned long div0_address;
+ 	unsigned long boundrx_address;
+	unsigned long overf_address;
+ 	unsigned long nmi_address;
+	unsigned long debg_address;
+ 	unsigned long dfault_address;
+	unsigned long badtss_address;
+	unsigned long badop_address;
+	unsigned long reserved_address;
+	unsigned long ss_address;
+	unsigned long gp_address;
+ 
 	unsigned long idt_address;
 	unsigned long idt_ptr[2];
 
@@ -147,7 +158,14 @@ void idt_init(void)
 	IDT[0x0a].selector = KERNEL_CODE_SEGMENT_OFFSET;
 	IDT[0x0a].zero = 0;
 	IDT[0x0a].type_attr = INTERRUPT_GATE;
-	IDT[0x0a].offset_higherbits = (badtss_address & 0xffff0000) >> 16;	
+	IDT[0x0a].offset_higherbits = (badtss_address & 0xffff0000) >> 16;
+	while(i > 5) {
+			reserved_address = (unsigned long)reserved_handler;
+			IDT[i].offset_lowerbits = reserved_address & 0xffff;
+			IDT[i].selector = KERNEL_CODE_SEGMENT_OFFSET;
+			IDT[i].zero = 0;
+			IDT[i].type_attr = INTERRUPT_GATE;
+			IDT[i].offset_higherbits = (reserved_address & 0xffff0000) >> 16;	
 	
 	
 
