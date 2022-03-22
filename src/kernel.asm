@@ -47,7 +47,7 @@ extern kmain 		;this is defined in the c file
 
 start:
      lgdt [gdt_pointer]  
-     xor %ebp, %ebp
+     xor ebp, ebp
      jmp CODE_SEG:kmain
     .setcs:
     mov ax, DATA_SEG          ; Setup the segment registers with our flat data selector
