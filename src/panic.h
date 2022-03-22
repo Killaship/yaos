@@ -54,6 +54,8 @@ void bsod(const char* stopcode) {
 	kprint_newline();
 	kprint("and submit an issue with the below information:", 0x1F);
 	kprint_newline();
+	kprint_newline();
+	kprint(stopcode, 0x1F);
 	
 }
 
