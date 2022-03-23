@@ -311,6 +311,6 @@ void err24_handler() {
 
 typedef void (*f)(void);                 //declare typdef
 
-f func[25] = {&err_handler, &err1_handler, &err2_handler, &err3_handler, &err4_handler, &err5_handler, &err6_handler, &err7_handler,&err8_handler,&err9_handler&err10_handler,&err11_handler,&err12_handler,&err13_handler,&err14_handler,&err15_handler,&err16_handler,&err17_handler,&err18_handler,&err19_handler,&err20_handler,&err22_handler,&err23_handler,&err24_handler};      
+f idtfunc[32] = {&err_handler, &err1_handler, &err2_handler, &err3_handler, &err4_handler, &err5_handler, &err6_handler, &err7_handler,&err8_handler,&err9_handler&err10_handler,&err11_handler,&err12_handler,&err13_handler,&err14_handler,&err15_handler,&err16_handler,&err17_handler,&err18_handler,&err19_handler,&err20_handler,&err21_handler,&err15_handler,&err15_handler,&err15_handler,&err15_handler,&err22_handler,&err23_handler,&err24_handler,&err15_handler,};      
 //make array func of type f,
 //the pointer to a function
