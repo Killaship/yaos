@@ -14,6 +14,7 @@ void stacktrace(unsigned int maxframes)
     {
         // Unwind to previous stack frame
         kprint(itoa(stk->eip), 0x1F);
+	kprint_newline();
         stk = stk->ebp;
     }
 }
