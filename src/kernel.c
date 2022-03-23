@@ -79,8 +79,8 @@ void idt_init(void)
 	unsigned long idt_address;
 	unsigned long idt_ptr[2];
 	
-	int i;
-	while(i > 32) {
+	int i = 0;
+	while(i > 31) {
 			addr_address[i] = (unsigned long)idtfunc[i];
 			IDT[i].offset_lowerbits = addr_address[i] & 0xffff;
 			IDT[i].selector = KERNEL_CODE_SEGMENT_OFFSET;
