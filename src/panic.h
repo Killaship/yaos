@@ -143,3 +143,174 @@ void err_handler() {
 	asm volatile ("cli");
 	while(1);
 }
+
+void err1_handler() {
+	// Say there's been an error, and then hang.
+	bsod(1);
+	asm volatile ("cli");
+	while(1);
+}
+
+void err2_handler() {
+	// Say there's been an error, and then hang.
+	bsod(2);
+	asm volatile ("cli");
+	while(1);
+}
+
+void err3_handler() {
+	// Say there's been an error, and then hang.
+	bsod(3);
+	asm volatile ("cli");
+	while(1);
+}
+
+void err4_handler() {
+	// Say there's been an error, and then hang.
+	bsod(4);
+	asm volatile ("cli");
+	while(1);
+}
+
+void err5_handler() {
+	// Say there's been an error, and then hang.
+	bsod(5);
+	asm volatile ("cli");
+	while(1);
+}
+
+void err6_handler() {
+	// Say there's been an error, and then hang.
+	bsod(6);
+	asm volatile ("cli");
+	while(1);
+}
+
+void err7_handler() {
+	// Say there's been an error, and then hang.
+	bsod(7);
+	asm volatile ("cli");
+	while(1);
+}
+
+void err8_handler() {
+	// Say there's been an error, and then hang.
+	bsod(8);
+	asm volatile ("cli");
+	while(1);
+}
+
+void err9_handler() {
+	// Say there's been an error, and then hang.
+	bsod(9);
+	asm volatile ("cli");
+	while(1);
+}
+
+void err10_handler() {
+	// Say there's been an error, and then hang.
+	bsod(10);
+	asm volatile ("cli");
+	while(1);
+}
+
+void err11_handler() {
+	// Say there's been an error, and then hang.
+	bsod(11);
+	asm volatile ("cli");
+	while(1);
+}
+
+void err12_handler() {
+	// Say there's been an error, and then hang.
+	bsod(12);
+	asm volatile ("cli");
+	while(1);
+}
+
+void err13_handler() {
+	// Say there's been an error, and then hang.
+	bsod(13);
+	asm volatile ("cli");
+	while(1);
+}
+
+void err14_handler() {
+	// Say there's been an error, and then hang.
+	bsod(14);
+	asm volatile ("cli");
+	while(1);
+}
+
+void err15_handler() {
+	// Say there's been an error, and then hang.
+	bsod(15);
+	asm volatile ("cli");
+	while(1);
+}
+
+void err16_handler() {
+	// Say there's been an error, and then hang.
+	bsod(16);
+	asm volatile ("cli");
+	while(1);
+}
+
+void err17_handler() {
+	// Say there's been an error, and then hang.
+	bsod(17);
+	asm volatile ("cli");
+	while(1);
+}
+
+void err18_handler() {
+	// Say there's been an error, and then hang.
+	bsod(18);
+	asm volatile ("cli");
+	while(1);
+}
+
+void err19_handler() {
+	// Say there's been an error, and then hang.
+	bsod(19);
+	asm volatile ("cli");
+	while(1);
+}
+
+void err20_handler() {
+	// Say there's been an error, and then hang.
+	bsod(20);
+	asm volatile ("cli");
+	while(1);
+}
+
+void err21_handler() {
+	// Say there's been an error, and then hang.
+	bsod(21);
+	asm volatile ("cli");
+	while(1);
+}
+void err22_handler() {
+	// Say there's been an error, and then hang.
+	bsod(22);
+	asm volatile ("cli");
+	while(1);
+}
+void err23_handler() {
+	// Say there's been an error, and then hang.
+	bsod(23);
+	asm volatile ("cli");
+	while(1);
+}
+void err24_handler() {
+	// Say there's been an error, and then hang.
+	bsod(24);
+	asm volatile ("cli");
+	while(1);
+}
+
+typedef void (*f)(void);                 //declare typdef
+
+f func[25] = {&err_handler, &err1_handler, &err2_handler, &err3_handler, &err4_handler, &err5_handler, &err6_handler, &err7_handler,&err8_handler,&err9_handler&err10_handler,&err11_handler,&err12_handler,&err13_handler,&err14_handler,&err15_handler,&err16_handler,&err17_handler,&err18_handler,&err19_handler,&err20_handler,&err22_handler,&err23_handler,&err24_handler};      
+//make array func of type f,
+//the pointer to a function
