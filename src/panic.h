@@ -10,9 +10,11 @@ void stacktrace(unsigned int maxframes) {
 	struct stackframe *stk;
 	asm volatile("movl %%ebp,%0" : "=r"(stk) ::);
 	kprint("Stack trace:", 0x1F);
+	kprint_newline();
 	for(unsigned int frame = 0; stk && frame < maxframes; ++frame) {
         	// Unwind to previous stack frame
 		prntnum(stk->eip,16,' ',addr);
+		kprint("0x", 0x1F);
         	kprint(addr, 0x1F);
 		kprint_newline();
         	stk = stk->ebp;
