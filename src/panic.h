@@ -105,31 +105,31 @@ void bsod(const int stopcode) {
 			kprint("Error type: INTELRSVD", 0x1F);
 			break;
 		case 16: // #MF
-			kprint("Error type: #DE", 0x1F);
+			kprint("Error type: #MF", 0x1F);
 			break;
 		case 17: // #AC
-			kprint("Error type: #DE", 0x1F);
+			kprint("Error type: #AC", 0x1F);
 			break;
 		case 18: // #MC
-			kprint("Error type: #DE", 0x1F);
+			kprint("Error type: #MC", 0x1F);
 			break;
 		case 19: // #XF
-			kprint("Error type: #DE", 0x1F);
+			kprint("Error type: #XF", 0x1F);
 			break;
 		case 20: // #VE
-			kprint("Error type: #DE", 0x1F);
+			kprint("Error type: #VE", 0x1F);
 			break;
 		case 21: // #CP
-			kprint("Error type: #DE", 0x1F);
+			kprint("Error type: #CP", 0x1F);
 			break;
 		case 22: // #HV
-			kprint("Error type: #DE", 0x1F);
+			kprint("Error type: #HV", 0x1F);
 			break;
 		case 23: // #VC
-			kprint("Error type: #DE", 0x1F);
+			kprint("Error type: #VC", 0x1F);
 			break;
 		case 24: // #SX
-			kprint("Error type: #DE", 0x1F);
+			kprint("Error type: #SX", 0x1F);
 			break;
 	}
 	
