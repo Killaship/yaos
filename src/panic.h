@@ -25,7 +25,7 @@ void trace(uintptr_t ebp) {
         uint32_t eip;
     };
 
-    auto* current = (Frame*)ebp;
+    unsigned int* current = (Frame*)ebp;
 
 	kprint("Stack Trace:", 0x1F);
 	kprint_newline();
