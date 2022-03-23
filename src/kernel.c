@@ -7,6 +7,7 @@
 #include "common.h"
 #include <stdint.h>
 #include <stdbool.h>
+#include <stddef.h>
 #define LINES 25
 #define COLUMNS_IN_LINE 80
 #define BYTES_FOR_EACH_ELEMENT 2
