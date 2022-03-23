@@ -159,6 +159,7 @@ void idt_init(void)
 	IDT[0x0a].zero = 0;
 	IDT[0x0a].type_attr = INTERRUPT_GATE;
 	IDT[0x0a].offset_higherbits = (badtss_address & 0xffff0000) >> 16;
+	int i;
 	while(i > 5) {
 			reserved_address = (unsigned long)reserved_handler;
 			IDT[i].offset_lowerbits = reserved_address & 0xffff;
@@ -166,7 +167,8 @@ void idt_init(void)
 			IDT[i].zero = 0;
 			IDT[i].type_attr = INTERRUPT_GATE;
 			IDT[i].offset_higherbits = (reserved_address & 0xffff0000) >> 16;	
-	
+		i++;
+	}
 	
 
 	/*     Ports
