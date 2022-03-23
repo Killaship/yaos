@@ -74,99 +74,19 @@ void clear_screen(void)
 
 void idt_init(void)
 {
-	unsigned long div0_address;
- 	unsigned long boundrx_address;
-	unsigned long overf_address;
- 	unsigned long nmi_address;
-	unsigned long debg_address;
- 	unsigned long dfault_address;
-	unsigned long badtss_address;
-	unsigned long badop_address;
-	unsigned long reserved_address;
-	unsigned long ss_address;
-	unsigned long gp_address;
- 
+	
+ 	unsigned long addr_address[32] = {0};
 	unsigned long idt_address;
 	unsigned long idt_ptr[2];
-
-	div0_address = (unsigned long)div0_handler;
-	IDT[0x00].offset_lowerbits = div0_address & 0xffff;
-	IDT[0x00].selector = KERNEL_CODE_SEGMENT_OFFSET;
-	IDT[0x00].zero = 0;
-	IDT[0x00].type_attr = INTERRUPT_GATE;
-	IDT[0x00].offset_higherbits = (div0_address & 0xffff0000) >> 16;
 	
-	gp_address = (unsigned long)gp_handler;
-	IDT[0x00].offset_lowerbits = gp_address & 0xffff;
-	IDT[0x00].selector = KERNEL_CODE_SEGMENT_OFFSET;
-	IDT[0x00].zero = 0;
-	IDT[0x00].type_attr = INTERRUPT_GATE;
-	IDT[0x00].offset_higherbits = (gp_address & 0xffff0000) >> 16;
- 
- 	debg_address = (unsigned long)debg_handler;
-	IDT[0x01].offset_lowerbits = debg_address & 0xffff;
-	IDT[0x01].selector = KERNEL_CODE_SEGMENT_OFFSET;
-	IDT[0x01].zero = 0;
-	IDT[0x01].type_attr = INTERRUPT_GATE;
-	IDT[0x01].offset_higherbits = (debg_address & 0xffff0000) >> 16;
- 
-	nmi_address = (unsigned long)nmi_handler;
-	IDT[0x02].offset_lowerbits = nmi_address & 0xffff;
-	IDT[0x02].selector = KERNEL_CODE_SEGMENT_OFFSET;
-	IDT[0x02].zero = 0;
-	IDT[0x02].type_attr = INTERRUPT_GATE;
-	IDT[0x02].offset_higherbits = (nmi_address & 0xffff0000) >> 16;
- 
-
-   	overf_address = (unsigned long)overf_handler;
-	IDT[0x04].offset_lowerbits = overf_address & 0xffff;
-	IDT[0x04].selector = KERNEL_CODE_SEGMENT_OFFSET;
-	IDT[0x04].zero = 0;
-	IDT[0x04].type_attr = INTERRUPT_GATE;
-	IDT[0x04].offset_higherbits = (overf_address & 0xffff0000) >> 16;
-	
- 	badop_address = (unsigned long)badop_handler;
-	IDT[0x08].offset_lowerbits = badop_address & 0xffff;
-	IDT[0x08].selector = KERNEL_CODE_SEGMENT_OFFSET;
-	IDT[0x08].zero = 0;
-	IDT[0x08].type_attr = INTERRUPT_GATE;
-	IDT[0x08].offset_higherbits = (badop_address & 0xffff0000) >> 16; 
-
-	boundrx_address = (unsigned long)boundrx_handler;
-	IDT[0x05].offset_lowerbits = boundrx_address & 0xffff;
-	IDT[0x05].selector = KERNEL_CODE_SEGMENT_OFFSET;
-	IDT[0x05].zero = 0;
-	IDT[0x05].type_attr = INTERRUPT_GATE;
-	IDT[0x05].offset_higherbits = (boundrx_address & 0xffff0000) >> 16;
-	
-	ss_address = (unsigned long)ss_handler;
-	IDT[0x0c].offset_lowerbits = ss_address & 0xffff;
-	IDT[0x0c].selector = KERNEL_CODE_SEGMENT_OFFSET;
-	IDT[0x0c].zero = 0;
-	IDT[0x0c].type_attr = INTERRUPT_GATE;
-	IDT[0x0c].offset_higherbits = (ss_address & 0xffff0000) >> 16;
- 
-  	dfault_address = (unsigned long)dfault_handler;
-	IDT[0x08].offset_lowerbits = dfault_address & 0xffff;
-	IDT[0x08].selector = KERNEL_CODE_SEGMENT_OFFSET;
-	IDT[0x08].zero = 0;
-	IDT[0x08].type_attr = INTERRUPT_GATE;
-	IDT[0x08].offset_higherbits = (dfault_address & 0xffff0000) >> 16;
-	
-	badtss_address = (unsigned long)badtss_handler;
-	IDT[0x0a].offset_lowerbits = badtss_address & 0xffff;
-	IDT[0x0a].selector = KERNEL_CODE_SEGMENT_OFFSET;
-	IDT[0x0a].zero = 0;
-	IDT[0x0a].type_attr = INTERRUPT_GATE;
-	IDT[0x0a].offset_higherbits = (badtss_address & 0xffff0000) >> 16;
 	int i;
-	while(i > 5) {
-			reserved_address = (unsigned long)reserved_handler;
-			IDT[i].offset_lowerbits = reserved_address & 0xffff;
+	while(i > 32) {
+			addr_address[i] = (unsigned long)idtfunc[i];
+			IDT[i].offset_lowerbits = addr_address[i] & 0xffff;
 			IDT[i].selector = KERNEL_CODE_SEGMENT_OFFSET;
 			IDT[i].zero = 0;
 			IDT[i].type_attr = INTERRUPT_GATE;
-			IDT[i].offset_higherbits = (reserved_address & 0xffff0000) >> 16;	
+			IDT[i].offset_higherbits = (addr_address[i] & 0xffff0000) >> 16;	
 		i++;
 	}
 	
