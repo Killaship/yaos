@@ -16,6 +16,9 @@ void stacktrace(unsigned int maxframes) {
 		prntnum(stk->eip,16,' ',addr);
 		kprint("0x", 0x1F);
         	kprint(addr, 0x1F);
+		if(frame == 2) {
+		kprint("   <<< Faulty Instruction", 0x1F);
+		}
 		kprint_newline();
         	stk = stk->ebp;
 	}
