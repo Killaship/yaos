@@ -1,5 +1,5 @@
 #pragma once
-/*
+
 
 struct stackframe {
   struct stackframe* ebp;
@@ -13,12 +13,12 @@ void stacktrace(unsigned int maxframes)
     for(unsigned int frame = 0; stk && frame < maxframes; ++frame)
     {
         // Unwind to previous stack frame
-        kprint("  0x{0:16}     \n", stk->eip);
+        kprint(itoa(stk->eip), 0x1F);
         stk = stk->ebp;
     }
 }
-*/
 
+/*
 void trace(uintptr_t ebp) {
     typedef struct Frame {
         struct Frame* ebp;
@@ -46,7 +46,7 @@ void trace(uintptr_t ebp) {
         current = current->ebp;
 	}
 }
-
+*/
 void bsod(const int stopcode) {
 	
 	write_port(0x3D4, 0x0A); // Disable VGA cursor
