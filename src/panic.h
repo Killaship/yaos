@@ -21,35 +21,6 @@ void stacktrace(unsigned int maxframes) {
 	}
 }
 
-/*
-void trace(uintptr_t ebp) {
-    typedef struct Frame {
-        struct Frame* ebp;
-        uint32_t eip;
-    }Frame;
-
-    unsigned int* current = (Frame*)ebp;
-
-	kprint("Stack Trace:", 0x1F);
-	kprint_newline();
-    	size_t i = 0;
-	while(true) {
-		if(!current) {
-    		break;
-		}
-
-        if(current->eip == 0) {
-            break;
-	}
-	
-        kprint("EIP:", 0x1F);
-	kprint(itoa(i++),0x1F); 
-	kprint(itoa(current->eip),0x1F);		
-		
-        current = current->ebp;
-	}
-}
-*/
 void bsod(const int stopcode) {
 	
 	write_port(0x3D4, 0x0A); // Disable VGA cursor
@@ -165,7 +136,7 @@ void bsod(const int stopcode) {
 			break;
 	}
 	kprint_newline();
-	stacktrace(3);
+	stacktrace(8);
 	
 	
 }
