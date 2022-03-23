@@ -20,12 +20,12 @@ void stacktrace(unsigned int maxframes)
 */
 
 void trace(uintptr_t ebp) {
-    typedef struct frame {
+    typedef struct Frame {
         Frame* ebp;
         uint32_t eip;
-    } Frame;
+    }
 
-    unsigned int* current = (Frame*)ebp;
+    uintptr_t* current = (Frame*)ebp;
 
 	kprint("Stack Trace:", 0x1F);
 	kprint_newline();
