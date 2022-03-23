@@ -20,7 +20,7 @@ void stacktrace(unsigned int maxframes)
 */
 
 void trace(uintptr_t ebp) {
-    struct Frame {
+    typedef struct Frame {
         Frame* ebp;
         uint32_t eip;
     };
