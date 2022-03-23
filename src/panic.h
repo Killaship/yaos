@@ -20,10 +20,10 @@ void stacktrace(unsigned int maxframes)
 */
 
 void trace(uintptr_t ebp) {
-    typedef struct Frame {
+    typedef struct frame {
         Frame* ebp;
         uint32_t eip;
-    };
+    } Frame;
 
     unsigned int* current = (Frame*)ebp;
 
