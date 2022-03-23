@@ -23,7 +23,7 @@ void trace(uintptr_t ebp) {
     typedef struct Frame {
         Frame* ebp;
         uint32_t eip;
-    };
+    }Frame;
 
     uintptr_t* current = (Frame*)ebp;
 
