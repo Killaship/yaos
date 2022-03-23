@@ -161,6 +161,8 @@ void bsod(const int stopcode) {
 			kprint("Error type: #SX", 0x1F);
 			break;
 	}
+	kprint_newline();
+	stacktrace(3);
 	
 	
 }
