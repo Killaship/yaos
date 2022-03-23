@@ -31,8 +31,9 @@ void trace(uintptr_t ebp) {
 	kprint_newline();
     	size_t i = 0;
 	while(true) {
-		if(!current)
+		if(!current) {
     		break;
+		}
 
         if(current->eip == 0) {
             break;
