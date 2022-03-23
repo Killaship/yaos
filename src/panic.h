@@ -57,33 +57,83 @@ void bsod(const int stopcode) {
 	kprint_newline();
 	switch(stopcode) {
 		case 0: // #DE
-			kprint("Error type: #DE");
+			kprint("Error type: #DE", 0x1F);
 			break;
 		case 1: // #DB
+			kprint("Error type: #DB", 0x1F);
+			break;
 		case 2: // NMI
-		case 3:
-		case 4:
-		case 5:
-		case 6:
-		case 7:
-		case 8:
-		case 9:
-		case 10:
-		case 11:
-		case 12:
-		case 13:
-		case 14:
-		case 15:
+			kprint("Error type: NMI", 0x1F);
+			break;
+		case 3: // #BP
+			kprint("Error type: #BP", 0x1F);
+			break;
+		case 4: // #OF
+			kprint("Error type: #OF", 0x1F);
+			break;
+		case 5: // #BR
+			kprint("Error type: #BR", 0x1F);
+			break;
+		case 6: // #UD
+			kprint("Error type: #UD", 0x1F);
+			break;
+		case 7: // #NM
+			kprint("Error type: #NM", 0x1F);
+			break;
+		case 8: // #DF
+			kprint("Error type: #DF", 0x1F);
+			break;
+		case 9: // CSO
+			kprint("Error type: CSO", 0x1F);
+			break;
+		case 10: // #TS
+			kprint("Error type: #TS", 0x1F);
+			break;
+		case 11: // #NP
+			kprint("Error type: #NP", 0x1F);
+			break;
+		case 12: // #SS
+			kprint("Error type: #SS", 0x1F);
+			break;
+		case 13: // #GP
+			kprint("Error type: #GP", 0x1F);
+			break;
+		case 14: // #PF
+			kprint("Error type: #PF", 0x1F);
+			break;
+		case 15: // Intel Reserved
+			kprint("Error type: #DE", 0x1F);
+			break;
 		case 16:
+			kprint("Error type: #DE", 0x1F);
+			break;
 		case 17:
+			kprint("Error type: #DE", 0x1F);
+			break;
 		case 18:
+			kprint("Error type: #DE", 0x1F);
+			break;
 		case 19:
+			kprint("Error type: #DE", 0x1F);
+			break;
 		case 20:
+			kprint("Error type: #DE", 0x1F);
+			break;
 		case 21:
+			kprint("Error type: #DE", 0x1F);
+			break;
 		case 22:
+			kprint("Error type: #DE", 0x1F);
+			break;
 		case 23:
+			kprint("Error type: #DE", 0x1F);
+			break;
 		case 24:
+			kprint("Error type: #DE", 0x1F);
+			break;
 		case 25:
+			kprint("Error type: #DE", 0x1F);
+			break;c
 		
 	}
 	
@@ -93,7 +143,7 @@ void bsod(const int stopcode) {
 
 void err_handler() {
 	// Say there's been an error, and then hang.
-	bsod("test");
+	bsod(0);
 	asm volatile ("cli");
 	while(1);
 }
