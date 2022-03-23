@@ -5,18 +5,18 @@ struct stackframe {
   struct stackframe* ebp;
   uint32_t eip;
 };
-void stacktrace(unsigned int maxframes)
-{
-    struct stackframe *stk;
-    asm volatile("movl %%ebp,%0" : "=r"(stk) ::);
-    kprint("Stack trace:", 0x1F);
-    for(unsigned int frame = 0; stk && frame < maxframes; ++frame)
-    {
-        // Unwind to previous stack frame
-        kprint(itoa(stk->eip), 0x1F);
-	kprint_newline();
-        stk = stk->ebp;
-    }
+void stacktrace(unsigned int maxframes) {
+	char* addr[16];
+	struct stackframe *stk;
+	asm volatile("movl %%ebp,%0" : "=r"(stk) ::);
+	kprint("Stack trace:", 0x1F);
+	for(unsigned int frame = 0; stk && frame < maxframes; ++frame) {
+        	// Unwind to previous stack frame
+		prntnum(stk->eip,16,' ',addr);
+        	kprint(addr, 0x1F);
+		kprint_newline();
+        	stk = stk->ebp;
+	}
 }
 
 /*
