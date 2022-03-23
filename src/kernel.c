@@ -7,7 +7,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include <stddef.h
+#include <stddef.h>
 #include "common.h"
 #define LINES 25
 #define COLUMNS_IN_LINE 80
