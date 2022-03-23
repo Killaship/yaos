@@ -8,7 +8,7 @@ struct stackframe {
 void stacktrace(unsigned int maxframes)
 {
     struct stackframe *stk;
-    asm ("movl %%ebp,%0" : "r"(stk) ::);
+    asm volatile("movl %%ebp,%0" : "r"(stk) ::);
     kprint("Stack trace:", 0x1F);
     for(unsigned int frame = 0; stk && frame < maxframes; ++frame)
     {
