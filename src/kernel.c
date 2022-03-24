@@ -148,8 +148,7 @@ void kmain(void)
 	kprint_newline();
 
 	idt_init();
-	
-	int x = 0 / 0;
+	asm volatile("pop");
 		
 	while(1);
 }
