@@ -148,7 +148,8 @@ void kmain(void)
 	kprint_newline();
 
 	idt_init();
-	asm volatile("pop");
-		
+	while(1) {
+	asm volatile("push 0x44");
+	}	
 	while(1);
 }
