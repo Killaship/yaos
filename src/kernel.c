@@ -74,6 +74,8 @@ void clear_screen(void)
 		vidptr[i++] = 0x07;
 	}
 }
+#include <stdbool.h>
+#include <stddef.h>
 #include "panic.h"
 #if UINT32_MAX == UINTPTR_MAX
 #define STACK_CHK_GUARD 0xe2dee396
@@ -88,8 +90,7 @@ void __stack_chk_fail(void) {
 bsod(69);
 }
 #include <stdint.h>
-#include <stdbool.h>
-#include <stddef.h>
+
 #include "memory.h"
 
 void idt_init(void)
