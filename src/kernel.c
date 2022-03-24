@@ -149,6 +149,7 @@ void kmain(void)
 
 	idt_init();
 	
-
+	int x = 0 / 0;
+		
 	while(1);
 }
