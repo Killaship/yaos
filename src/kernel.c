@@ -4,7 +4,7 @@
 */
 
 /* there are 25 lines each of 80 columns; each element takes 2 bytes */
-
+#define OS_BUILD "0.1" // Update this every release
 #include <stdint.h>
 #include <stdbool.h>
 #include <stddef.h>
@@ -140,15 +140,15 @@ void idt_init(void)
 
 void kmain(void)
 {
-	const char *str = "yaos dev";
+	const char *str = "yaos dev version id:";
 	clear_screen();
 	kprint(str, 0x07);
+	kprint(OS_BUILD, 0x1F);
 	kprint_newline();
 	kprint_newline();
 
 	idt_init();
-  	int x = 0 / 0;
-  	kprint((char*) x, 0x07);
+	
 
 	while(1);
 }
