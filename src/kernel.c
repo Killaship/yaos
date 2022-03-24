@@ -8,6 +8,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <stddef.h>
+#include "memory.h"
+
 #include "common.h"
 #define LINES 25
 #define COLUMNS_IN_LINE 80
