@@ -151,8 +151,8 @@ void kmain(void)
 	kprint_newline();
 
 	idt_init();
-	while(1) {
+	/*while(1) {
 	asm volatile("push 0x44");
-	}	
+	}*/	// TO DO: avoid stack overflow
 	while(1);
 }
