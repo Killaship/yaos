@@ -9,8 +9,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include "common.h"
-#include "panic.h"
-#include "memory.h"
+
 
 
 #define LINES 25
@@ -79,6 +78,7 @@ void clear_screen(void)
 		vidptr[i++] = 0x07;
 	}
 }
+#include "panic.h"
 
 
 void idt_init(void)
@@ -139,7 +139,7 @@ void idt_init(void)
 	load_idt(idt_ptr);
 }
 
- 
+ #include "memory.h"
 
 void kmain(void)
 {
