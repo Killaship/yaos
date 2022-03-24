@@ -5,7 +5,12 @@
 
 /* there are 25 lines each of 80 columns; each element takes 2 bytes */
 #define OS_BUILD "0.1" // Update this every release
-
+#include <stdint.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include "common.h"
+#include "panic.h"
+#include "memory.h"
 
 
 #define LINES 25
@@ -74,24 +79,7 @@ void clear_screen(void)
 		vidptr[i++] = 0x07;
 	}
 }
-#include <stdbool.h>
-#include <stddef.h>
-#include "panic.h"
-#if UINT32_MAX == UINTPTR_MAX
-#define STACK_CHK_GUARD 0xe2dee396
-#else
-#define STACK_CHK_GUARD 0x595e9fbd94fda766
-#endif
- 
-uintptr_t __stack_chk_guard = STACK_CHK_GUARD;
- 
-__attribute__((noreturn))
-void __stack_chk_fail(void) {
-bsod(69);
-}
-#include <stdint.h>
-#include "common.h"
-#include "memory.h"
+
 
 void idt_init(void)
 {
