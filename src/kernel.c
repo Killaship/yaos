@@ -7,7 +7,7 @@
 #define OS_BUILD "0.1" // Update this every release
 
 
-#include "common.h"
+
 #define LINES 25
 #define COLUMNS_IN_LINE 80
 #define BYTES_FOR_EACH_ELEMENT 2
@@ -90,7 +90,7 @@ void __stack_chk_fail(void) {
 bsod(69);
 }
 #include <stdint.h>
-
+#include "common.h"
 #include "memory.h"
 
 void idt_init(void)
