@@ -59,7 +59,7 @@ start:
     mov esp, stack_space        ; set stack pointer		
 
 section .bss
-global _heap_start, _heap_end
+global heap_start, heap_end
     heap_start:
         resb 32768; 32k for sbrk/malloc to use
     heap_end:
