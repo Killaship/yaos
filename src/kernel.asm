@@ -60,8 +60,8 @@ start:
 
 section .bss
 global _heap_start, _heap_end
-    _heap_start:
+    heap_start:
         resb 32768; 32k for sbrk/malloc to use
-    _heap_end:
+    heap_end:
 resb 8192; 8KB for stack
 stack_space:
