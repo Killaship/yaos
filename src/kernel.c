@@ -21,6 +21,7 @@
 #define KERNEL_CODE_SEGMENT_OFFSET 0x08
 
 
+
 void load_idt(unsigned long *idt_ptr) {
 	asm volatile ("lidt (%%eax)" :: "a" (idt_ptr));
 }
@@ -137,7 +138,19 @@ void idt_init(void)
 	load_idt(idt_ptr);
 }
 
-
+ 
+#if UINT32_MAX == UINTPTR_MAX
+#define STACK_CHK_GUARD 0xe2dee396
+#else
+#define STACK_CHK_GUARD 0x595e9fbd94fda766
+#endif
+ 
+uintptr_t __stack_chk_guard = STACK_CHK_GUARD;
+ 
+__attribute__((noreturn))
+void __stack_chk_fail(void) {
+bsod("Stack Smashing detected!");
+}
 void kmain(void)
 {
 	const char *str = "yaos dev version id:";
