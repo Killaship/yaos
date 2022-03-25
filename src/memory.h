@@ -13,8 +13,10 @@ void *sbrk(int nbytes)
     return alloc;
 }
 */
-void loadpagedir() {
-asm volatile("push %ebp; mov %esp, %ebp; mov 8(%esp), %eax; mov %eax, %cr3; mov %ebp, %esp; pop %ebp;");
+void loadpagedir(unsigned int ptr) {
+	asm("push %ebp; mov %esp, %ebp;); 
+	asm("movq %0, %%cr3" ::"r"(ptr));
+	asm("mov 8(%esp), %eax; mov %eax, %cr3; mov %ebp, %esp; pop %ebp;");
 }
 void enablepaging() {
 	asm volatile("push %ebp; mov %esp, %ebp; mov %cr0, %eax; or $0x80000000, %eax; mov %eax, %cr0; mov %ebp, %esp; pop %ebp;");
@@ -44,6 +46,6 @@ void paging_init() {
 	}
 
 	page_directory[0] = ((unsigned int)first_page_table) | 3;
-	loadpagedir();
+	loadpagedir(page_directory);
 	enablepaging();
 }
