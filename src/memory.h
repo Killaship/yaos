@@ -22,7 +22,7 @@ void enablepaging() {
 	asm volatile("push %ebp; mov %esp, %ebp; mov %cr0, %eax; or $0x80000000, %eax; mov %eax, %cr0; mov %ebp, %esp; pop %ebp;");
 }
 uint32_t page_directory[1024] __attribute__((aligned(4096)));
-
+uint32_t first_page_table[1024] __attribute__((aligned(4096)));
 //set each entry to not present
 void paging_init() {
 	int i;
@@ -34,7 +34,7 @@ void paging_init() {
 	// attributes: supervisor level, read/write, present
 	// holds the physical address where we want to start mapping these pages to.
 	// in this case, we want to map these pages to the very beginning of memory.
-	uint32_t first_page_table[1024] __attribute__((aligned(4096)));
+	
 	unsigned int a;
 	 
 	//we will fill all 1024 entries in the table, mapping 4 megabytes
