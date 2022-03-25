@@ -141,8 +141,9 @@ void idt_init(void)
 
  #include "memory.h"
 
-void kmain(void)
-{
+void kmain(void) {
+	idt_init();
+	paging_init();
 	const char *str = "yaos dev version id:";
 	clear_screen();
 	kprint(str, 0x07);
@@ -150,7 +151,6 @@ void kmain(void)
 	kprint_newline();
 	kprint_newline();
 
-	idt_init();
 	/*while(1) {
 	asm volatile("push 0x44");
 	}*/	// TO DO: avoid stack overflow
