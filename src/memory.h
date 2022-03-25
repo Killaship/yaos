@@ -14,9 +14,9 @@ void *sbrk(int nbytes)
 }
 */
 void loadpagedir(unsigned int ptr) {
-	asm("push %ebp; mov %esp, %ebp;); 
-	asm("movq %0, %%cr3" ::"r"(ptr));
-	asm("mov 8(%esp), %eax; mov %eax, %cr3; mov %ebp, %esp; pop %ebp;");
+	asm("push %ebp; mov %esp, %ebp;"); 
+	asm("movl %0, %%cr3" ::"r"(ptr));
+	asm("mov %ebp, %esp; pop %ebp;");
 }
 void enablepaging() {
 	asm volatile("push %ebp; mov %esp, %ebp; mov %cr0, %eax; or $0x80000000, %eax; mov %eax, %cr0; mov %ebp, %esp; pop %ebp;");
