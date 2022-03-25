@@ -13,7 +13,7 @@ void *sbrk(int nbytes)
     return alloc;
 }
 */
-void loadpagedir(uint32_t ptr) {
+void loadpagedir(uint32_t* ptr) {
 	asm("push %ebp; mov %esp, %ebp;"); 
 	asm("movl %0, %%cr3" ::"r"(ptr));
 	asm("mov %ebp, %esp; pop %ebp;");
