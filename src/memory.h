@@ -51,3 +51,13 @@ void paging_init() {
 	enablepaging();
 	asm("andb $0xFE, (first_page_table); movb $0, 0");
 }
+
+
+/*
+void *malloc(size_t size) { 
+	void *mem[heap_size]; // blocks of 1024 = 32 allocations
+	bool bitmap[heap_size / ] = {0};
+	
+	
+}
+*/
