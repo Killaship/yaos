@@ -142,12 +142,13 @@ void idt_init(void)
  #include "memory.h"
 
 void kmain(void) {
-	idt_init();
-	paging_init();
-	const char *str = "yaos dev version id:";
 	clear_screen();
-	kprint(str, 0x07);
+	kprint("yaos version ", 0x07);
 	kprint(OS_BUILD, 0x1F);
+	idt_init();
+	kprint("IDT Initialized",0x07);
+	paging_init();
+	kprint("Paging initialized",0x07);
 	kprint_newline();
 	kprint_newline();
 

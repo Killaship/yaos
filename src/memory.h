@@ -49,7 +49,7 @@ void paging_init() {
 	page_directory[0] = ((unsigned int)first_page_table) | 3;
 	loadpagedir(page_directory);
 	enablepaging();
-	asm("andb $0xFE, (first_page_table); movb $0, 0");
+	// asm("andb $0xFE, (first_page_table); movb $0, 0");
 }
 
 

@@ -55,7 +55,7 @@ void bsod(const int stopcode) {
 	kprint_newline();
 	kprint("Finally, if all else fails, go to https://github.com/Killaship/yaos/issues", 0x1F);
 	kprint_newline();
-	kprint("and submit an issue with the below information:", 0x1F);
+	kprint("and submit an issue with the below information.", 0x1F);
 	kprint_newline();
 	kprint_newline();
 	switch(stopcode) {
