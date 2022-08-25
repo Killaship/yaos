@@ -1,3 +1,5 @@
+# Note: this github repo is not updated regularly, as I'm preparing to be locked out of github sometime in 2023, since I can't follow github's mandatory 2FA. (I don't have a phone)
+
 # yaos
 Yet Another OS
 
