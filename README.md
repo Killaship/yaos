@@ -1,4 +1,8 @@
-# Note: this github repo is not updated regularly, as I'm preparing to be locked out of github sometime in 2023, since I can't follow github's mandatory 2FA. (I don't have a phone)
+# Note: this github repo is not updated regularly, as I'm preparing to be locked out of github sometime in 2023, since I can't follow github's mandatory 2FA. 
+(I don't have a phone) If you want the source code or a copy of the latest OS build (in .iso or .elf, you choose), ping me on Discord, or, email me. I don't check my email very often, though.
+Email: killaship27@gmail.com
+Discord: Killaship2#0034
+(subject to change, I change it when I get DM spammed)
 
 # yaos
 Yet Another OS
